@@ -37,6 +37,13 @@
 			console.log("The plane can't take off: not everyone has paid.");
 		}
 
+		function printPassenger(passenger) {
+			console.log(passenger.name, ", Paid ticket: ", passenger.paid)
+		}
+
+		var allPrint = processPassengers(passengers, printPassenger);
+		allPrint();
+
 
 	</script>
 </head>
