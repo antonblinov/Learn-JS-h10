@@ -5,10 +5,10 @@
 	<title>onload</title>
 	<script type="text/javascript">
 
-		var passengers = [  { name: "Jane Doloop", paid: true },
-                    		{ name: "Dr. Evil", paid: true },
-                    		{ name: "Sue Property", paid: false },
-                    		{ name: "John Funcall", paid: true } ];
+		var passengers = [  { name: "Jane Doloop", paid: true, ticket: "coach" },
+                    		{ name: "Dr. Evil", paid: true, ticket: "firstclass" },
+                    		{ name: "Sue Property", paid: false, ticket: "firstclass" },
+                    		{ name: "John Funcall", paid: true, ticket: "coach" } ];
 
 		function processPassengers(passengers, testFunction) {
 			for (var i = 0; i < passengers.length; i++) {
@@ -43,6 +43,16 @@
 
 		var allPrint = processPassengers(passengers, printPassenger);
 		allPrint();
+
+		function serveCustomer(passenger) {
+			if (passenger.ticket === "firstclass") {
+				alert("Would you like a cocktail or wine?");
+			} else {
+				alert("Your choice is cola or water.");
+			}
+    // Предложить обед
+    // Забрать мусор
+  	}
 
 
 	</script>
