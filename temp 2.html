@@ -8,7 +8,7 @@
 		var passengers = [  { name: "Jane Doloop", paid: true, ticket: "coach" },
                     		{ name: "Dr. Evil", paid: true, ticket: "firstclass" },
                     		{ name: "Sue Property", paid: false, ticket: "firstclass" },
-                    		{ name: "John Funcall", paid: true, ticket: "coach" } ];
+                    		{ name: "John Funcall", paid: true, ticket: "economPlus" } ];
 
 		function processPassengers(passengers, testFunction) {
 			for (var i = 0; i < passengers.length; i++) {
@@ -41,8 +41,6 @@
 			console.log(passenger.name, ", Paid ticket: ", passenger.paid);
 		}
 
-
-
 		processPassengers(passengers, printPassenger);
 
 
@@ -67,16 +65,33 @@
 			return orderFunction;
 		}
 
+		function createDinnerOrder(passenger) {
+			var orderFunction;
+
+			if (passenger.ticket === "firstclass") {
+				orderFunction = function() {
+					alert("Would you like a chicken or pasta?");
+				};
+			} else if (passenger.ticket === "economPlus") {
+				orderFunction = function() {
+					alert("Your choice is snack or cheese.");
+				};
+			}
+			else {
+				orderFunction = function() {
+					alert("Your choice is snack.");
+				};
+			}
+			return orderFunction;
+		}
+
   	function serveCustomer(passenger) {
-			// if (passenger.ticket === "firstclass") {
-			// 	alert("Would you like a cocktail or wine?");
-			// } else {
-			// 	alert("Your choice is cola or water.");
-			// }
+
 			var getDrinkOrderFunction = createDrinkOrder(passenger);
+			var getDinnerOrderFunction = createDinnerOrder(passenger);
 			
 			getDrinkOrderFunction();
-    	// Предложить обед
+			getDinnerOrderFunction();
 
     	// Забрать мусор
   	}
