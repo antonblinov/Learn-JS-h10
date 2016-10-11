@@ -38,39 +38,47 @@
 		}
 
 		function printPassenger(passenger) {
-			console.log(passenger.name, ", Paid ticket: ", passenger.paid)
+			console.log(passenger.name, ", Paid ticket: ", passenger.paid);
 		}
+
+
 
 		var allPrint = processPassengers(passengers, printPassenger);
 		allPrint();
 
-		function serveCustomer(passenger) {
+
+		function createDrinkOrder(passenger) {
+			var orderFunction;
+
+			if (passenger.ticket === "firstclass") {
+				orderFunction = function() {
+					alert("Would you like a cocktail or wine?");
+				};
+			} else if (passenger.ticket === "economPlus") {
+				orderFunction = function() {
+					alert("Your choice is cola, water or wine.");
+				};
+			}
+			else {
+				orderFunction = function() {
+					alert("Your choice is cola or water.");
+				};
+			}
+			return orderFunction;
+		}
+
+  	function serveCustomer(passenger) {
 			// if (passenger.ticket === "firstclass") {
 			// 	alert("Would you like a cocktail or wine?");
 			// } else {
 			// 	alert("Your choice is cola or water.");
 			// }
 			var getDrinkOrderFunction = createDrinkOrder(passenger);
+			
 			getDrinkOrderFunction();
-    // Предложить обед
-    	getDrinkOrderFunction();
-    	getDrinkOrderFunction();
-    // Забрать мусор
-  	}
+    	// Предложить обед
 
-  	function createDrinkOrder(passenger) {
-  		var orderFunction;
-
-  		if (passenger.ticket === "firstclass") {
-  			orderFunction = function() {
-  				alert("Would you like a cocktail or wine?");
-  			};
-  		} else {
-  				orderFunction = function() {
-  					alert("Your choice is cola or water.");
-  				};
-  		}
-  		return orderFunction;
+    	// Забрать мусор
   	}
 
   	function servePassengers(passengers) {
@@ -78,8 +86,10 @@
   			serveCustomer(passengers[i]);
   		}
   	}
-  	
+
   	servePassengers(passengers);
+
+
 
 
 	</script>
