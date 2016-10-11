@@ -45,14 +45,41 @@
 		allPrint();
 
 		function serveCustomer(passenger) {
-			if (passenger.ticket === "firstclass") {
-				alert("Would you like a cocktail or wine?");
-			} else {
-				alert("Your choice is cola or water.");
-			}
+			// if (passenger.ticket === "firstclass") {
+			// 	alert("Would you like a cocktail or wine?");
+			// } else {
+			// 	alert("Your choice is cola or water.");
+			// }
+			var getDrinkOrderFunction = createDrinkOrder(passenger);
+			getDrinkOrderFunction();
     // Предложить обед
+    	getDrinkOrderFunction();
+    	getDrinkOrderFunction();
     // Забрать мусор
   	}
+
+  	function createDrinkOrder(passenger) {
+  		var orderFunction;
+
+  		if (passenger.ticket === "firstclass") {
+  			orderFunction = function() {
+  				alert("Would you like a cocktail or wine?");
+  			};
+  		} else {
+  				orderFunction = function() {
+  					alert("Your choice is cola or water.");
+  				};
+  		}
+  		return orderFunction;
+  	}
+
+  	function servePassengers(passengers) {
+  		for (var i = 0; i < passengers.length; i++) {
+  			serveCustomer(passengers[i]);
+  		}
+  	}
+  	
+  	servePassengers(passengers);
 
 
 	</script>
